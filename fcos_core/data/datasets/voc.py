@@ -81,7 +81,7 @@ class PascalVOCDataset(torch.utils.data.Dataset):
         height, width = anno["im_info"]
         target = BoxList(anno["boxes"], (width, height), mode="xyxy")
         target.add_field("labels", anno["labels"])
-        target.add_field("difficult", anno["difficult"])
+        # target.add_field("difficult", anno["difficult"])
         return target
 
     def _preprocess_annotation(self, target):

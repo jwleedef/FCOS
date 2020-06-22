@@ -28,8 +28,8 @@ MODEL:
     # we only use dcn in the last layer of towers
     USE_DCN_IN_TOWER: True
 DATASETS:
-  TRAIN: ("coco_2014_train", "coco_2014_valminusminival")
-  TEST: ("coco_2014_minival",)
+  TRAIN: ("voc_2012_train", "voc_2012_val") 
+  TEST: ("voc_2012_test",) 
 INPUT:
   MIN_SIZE_RANGE_TRAIN: (640, 800)
   MAX_SIZE_TRAIN: 1333
