@@ -7,10 +7,10 @@ import os
 class DatasetCatalog(object):
     DATA_DIR = "datasets"
     DATASETS = {
-        "coco_obstacle_train":{
-            "img_dir": "/home/jwlee/Dataset/obstacle_split/Data/JPEGImages",
-            "ann_file": "/home/jwlee/Dataset/obstacle_split/Data/ImageSets/Main/obstacle.json"
-        },
+        # "coco_obstacle_train":{
+        #     "img_dir": "/home/jwlee/Dataset/obstacle_split/Data/JPEGImages",
+        #     "ann_file": "/home/jwlee/Dataset/obstacle_split/Data/ImageSets/Main/obstacle.json"
+        # },
         "coco_2017_train": {
             "img_dir": "coco/train2017",
             "ann_file": "coco/annotations/instances_train2017.json"
@@ -100,14 +100,18 @@ class DatasetCatalog(object):
             "split": "test"
             # PASCAL VOC2012 doesn't made the test annotations available, so there's no json annotation
         },
+
+
         "obstacle_train": {
-            "data_dir": "/home/jwlee/Dataset/obstacle/Data",
-            "split": "trainval"
+            "img_dir": "/data_ssd/Jaewoo/obstacle/Data/JPEGImages",
+            "ann_file": "/data_ssd/Jaewoo/obstacle/Data/instances_obstacle_train.json"
         },
         "obstacle_test": {
-            "data_dir": "/home/jwlee/Dataset/obstacle/Data",
-            "split": "test"
+            "img_dir": "/data_ssd/Jaewoo/obstacle/Data/JPEGImages",
+            "ann_file": "/data_ssd/Jaewoo/obstacle/Data/instances_obstacle_test.json"
         },
+
+
         "cityscapes_fine_instanceonly_seg_train_cocostyle": {
             "img_dir": "cityscapes/images",
             "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_train.json"
@@ -150,13 +154,24 @@ class DatasetCatalog(object):
             data_dir = DatasetCatalog.DATA_DIR
             attrs = DatasetCatalog.DATASETS[name]
             args = dict(
-                data_dir=os.path.join(data_dir, attrs["data_dir"]),
-                split=attrs["split"],
+                root=os.path.join(data_dir, attrs["img_dir"]),
+                ann_file=os.path.join(data_dir, attrs["ann_file"]),
             )
             return dict(
-                factory="ObstacleDataset",
+                factory="ObstacleCOCOSet",
                 args=args,
-            )
+            )            
+        # elif "obstacle" in name:
+        #     data_dir = DatasetCatalog.DATA_DIR
+        #     attrs = DatasetCatalog.DATASETS[name]
+        #     args = dict(
+        #         data_dir=os.path.join(data_dir, attrs["data_dir"]),
+        #         split=attrs["split"],
+        #     )
+        #     return dict(
+        #         factory="ObstacleDataset",
+        #         args=args,
+        #     )
         raise RuntimeError("Dataset not available: {}".format(name))
 
 

@@ -60,6 +60,7 @@ fcos_core/data/datasets/__init__.py
 fcos_core/data/datasets/coco.py
 fcos_core/data/datasets/concat_dataset.py
 fcos_core/data/datasets/list_dataset.py
+fcos_core/data/datasets/obstacle.py
 fcos_core/data/datasets/voc.py
 fcos_core/data/datasets/evaluation/__init__.py
 fcos_core/data/datasets/evaluation/coco/__init__.py

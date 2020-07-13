@@ -32,23 +32,7 @@ class ObstacleDataset(torch.utils.data.Dataset):
         'table',
         'tree_trunk',
         'pole',
-        'bench',
-        'fire_hydrant',
-
-        'traffic_sign',
-        'traffic_light',
-        'traffic_light_controller',
-        'parking_meter',
-        'cat',
-        'dog',
-        'stroller',
-        'scooter',
-        'kiosk',
-        'stop',
-        'table',
-        'power_controller',
-        'barricade',
-        'wheelchair'
+        'fire_hydrant'
     )
 
     def __init__(self, data_dir, split, use_difficult=False, transforms=None):
