@@ -17,6 +17,8 @@ from fcos_core.utils.comm import synchronize, get_rank
 from fcos_core.utils.logger import setup_logger
 from fcos_core.utils.miscellaneous import mkdir
 
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def main():
     parser = argparse.ArgumentParser(description="PyTorch Object Detection Inference")
